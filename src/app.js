@@ -1,6 +1,7 @@
 const path = require("path");
 const todoRouter = require("./routers/todo");
-const userRoute = require("./routers/user");
+const userRouter = require("./routers/user");
+const loginRouter = require("./routers/login");
 
 const express = require("express");
 
@@ -15,7 +16,8 @@ app.use(express.json());
 // 为应用使用路由定义
 // 待办事项业务路由
 app.use("/api/todo", todoRouter);
-app.use("/api/user", userRoute);
+app.use("/api/user", userRouter);
+app.use("/api/login", loginRouter);
 
 // 若无匹配业务路由，则匹配 404 路由，代表访问路径不存在
 app.use(notFound);
