@@ -10,7 +10,7 @@ const config = {
 
 router.get("/", (req, res) => {
   const dateStr = new Date().valueOf();
-  const path = "https://github.com/login/oauth/authorize";
+  let path = "https://github.com/login/oauth/authorize";
   path += "?client_id=" + config.client_id;
   res.redirect(path);
 });
@@ -41,3 +41,5 @@ router.get("/callback", async (req, res) => {
     <img src="${result.data.avatar_url}" />
     `);
 });
+
+module.exports = router;
