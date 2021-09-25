@@ -27,7 +27,7 @@ router.get("/callback", async (req, res) => {
     "https://github.com/login/oauth/access_token",
     params
   );
-  res.send({ message: "登录成功", data: result.data });
+  // res.send({ message: "登录成功", data: result.data });
   const token = qs.parse(res.data).access_token;
   result = await axios.get("https://api.github.com/user", {
     headers: {
@@ -36,10 +36,11 @@ router.get("/callback", async (req, res) => {
     },
   });
   res.send({ message: "获取到用户信息", data: result.data });
-  res.send(`
-    <h1>hello ${result.data.login}</h1>
-    <img src="${result.data.avatar_url}" />
-    `);
+
+  // res.send(`
+  //   <h1>hello ${result.data.login}</h1>
+  //   <img src="${result.data.avatar_url}" />
+  //   `);
 });
 
 module.exports = router;

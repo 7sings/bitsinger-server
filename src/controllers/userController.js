@@ -3,26 +3,26 @@ const userService = require("../services/userService");
 /**
  * UserController
  * Controller 是业务入口，由 HTTP 路由解析后调用
- * 包含待办事项的增删改查功能
+ * 包含用户的增删改查功能
  */
 class UserController {
   /**
-   * 列出所有待办事项
+   * 返回所有用户
    * 响应格式
    * {
-   *   list: [user1, user2]
+   *   users: [user1, user2]
    * }
    * @param req Express 的请求参数
    * @param res Express 的响应参数
    */
   async listAll(req, res) {
     // 调用 Service 层对应的业务处理方法
-    const list = await userService.listAll();
-    res.send({ list });
+    const users = await userService.listAll();
+    res.send({ users });
   }
 
   /**
-   * 创建一条待办事项
+   * 创建一个新用户
    * 响应格式
    * {
    *   result: newUser
@@ -38,7 +38,7 @@ class UserController {
   }
 
   /**
-   * 删除一条待办事项
+   * 删除一个用户
    * 响应格式
    * {
    *   ok: true
@@ -49,51 +49,6 @@ class UserController {
   async delete(req, res) {
     // 调用 Service 层对应的业务处理方法
     await userService.delete(req.params.id);
-    res.send({ ok: true });
-  }
-
-  /**
-   * 删除所有待办事项
-   * 响应格式
-   * {
-   *   ok: true
-   * }
-   * @param req Express 的请求参数
-   * @param res Express 的响应参数
-   */
-  async deleteAll(req, res) {
-    // 调用 Service 层对应的业务处理方法
-    await userService.deleteAll();
-    res.send({ ok: true });
-  }
-
-  /**
-   * 将一条待办事项状态设为 done
-   * 响应格式
-   * {
-   *   ok: true
-   * }
-   * @param req Express 的请求参数
-   * @param res Express 的响应参数
-   */
-  async done(req, res) {
-    // 调用 Service 层对应的业务处理方法
-    await userService.update(req.params.id, { done: true });
-    res.send({ ok: true });
-  }
-
-  /**
-   * 将一条待办事项状态设为 undone
-   * 响应格式
-   * {
-   *   ok: true
-   * }
-   * @param req Express 的请求参数
-   * @param res Express 的响应参数
-   */
-  async undone(req, res) {
-    // 调用 Service 层对应的业务处理方法
-    await userService.update(req.params.id, { done: false });
     res.send({ ok: true });
   }
 }
