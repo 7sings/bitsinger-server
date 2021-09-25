@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "@byteinspire/api": "*",
+    "axios": "^0.21.4",
     "express": "^4.17.1"
   },
   "repository": {},
