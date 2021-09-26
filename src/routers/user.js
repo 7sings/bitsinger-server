@@ -17,8 +17,8 @@ function wrap(handler) {
 
 // 组装路由
 
-router.get("/", wrap(userController.listAll));
-router.get("/:id", wrap(userController.getUserById));
+router.get("/all", wrap(userController.getAllUsers));
+router.get("/find/:id", wrap(userController.getUserById));
 router.delete("/:id", wrap(userController.delete));
 router.get("/login", wrap(userController.login));
 router.get("/login/callback", wrap(userController.loginCallback));

@@ -2,7 +2,6 @@ const userService = require("../services/userService");
 const tokenService = require("../services/tokenService");
 const axios = require("axios");
 const qs = require("querystring");
-const res = require("express/lib/response");
 
 /**
  * UserController
@@ -19,9 +18,9 @@ class UserController {
    * @param req Express 的请求参数
    * @param res Express 的响应参数
    */
-  async listAll(req, res) {
+  async getAllUsers(req, res) {
     // 调用 Service 层对应的业务处理方法
-    const users = await userService.listAll();
+    const users = await userService.getAllUsers();
     res.send({ users });
   }
 
@@ -150,6 +149,24 @@ class UserController {
       res.status(400).send({ message: "following的id不正确" });
       return;
     }
+
+    const following = subscriber.following;
+    const fans = publisher.fans;
+    let index;
+    if ((index = following.indexOf(followingID) === -1)) {
+      subscriber.following.push(followingID);
+    } else {
+      subscriber.following.splice(index, 1);
+    }
+
+    if ((index = fans.indexOf(followerID) === -1)) {
+      publisher.fans.push(index);
+    } else {
+      publisher.fans.splice(index, 1);
+    }
+
+    await userService.update(followerID, subscriber);
+    await userService.update(followingID, publisher);
   }
 
   async unfollow(req, res) {}
