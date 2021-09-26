@@ -20,6 +20,7 @@ router.post("/like", wrap(postController.like));
 router.delete("/like", wrap(postController.unlike));
 
 router.get("/list", wrap(postController.listAll));
+router.get("/list/:authorID", wrap(postController.listAllByAuthor));
 // router.get("/:id", wrap(postController.findOne));
 router.post("/", wrap(postController.create));
 router.delete("/:id", wrap(postController.delete));

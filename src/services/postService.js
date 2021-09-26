@@ -36,7 +36,7 @@ class PostService {
   /**
    * 删除已发布的动态信息
    */
-  async delete(id, author) {
+  async delete(id) {
     const result = await postTable.where({ _id: ObjectId(id) }).delete();
     if (result.deletedCount === 0) {
       const error = new Error(`user:${id} not found`);

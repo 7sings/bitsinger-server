@@ -23,9 +23,9 @@ class PostController {
    * 查询author为userID下的所有post
    */
   async listAllByAuthor(req, res) {
-    const { author } = req.params;
+    const { authorID } = req.params;
     // 调用 Service 层对应的业务处理方法
-    const list = await postService.listAllByAuthor(author);
+    const list = await postService.listAllByAuthor(authorID);
     res.send({
       retCode: 0,
       retMsg: '获取所有动态成功',
