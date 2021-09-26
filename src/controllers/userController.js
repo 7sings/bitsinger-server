@@ -58,18 +58,23 @@ class UserController {
   async login(req, res) {
     //重定向到github登录
     const env = process.env;
+    const CLIENT_ID = env.client_id ? env.client_id : "7e428bb1271a32ee9bbf";
     let path = "https://github.com/login/oauth/authorize";
-    path += "?client_id=" + env.client_id;
+    path += "?client_id=" + CLIENT_ID;
     res.redirect(path);
   }
 
   async loginCallback(req, res) {
     //获取环境变量中的配置
     const env = process.env;
+    const CLIENT_ID = env.client_id ? env.client_id : "7e428bb1271a32ee9bbf";
+    const CLIENT_SECRET = env.client_secret
+      ? env.client_secret
+      : "61d732a6e7d07d309f3fb00d3539acd6f01ba354";
     const code = req.query.code;
     const params = {
-      client_id: env.client_id,
-      client_secret: env.client_secret,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
       code: code,
     };
     let result = await axios.post(
@@ -138,9 +143,13 @@ class UserController {
 
   async follow(req, res) {
     //follwerID是订阅者id，followingID是发布者id
-    const { followerID, followingID } = req.body;
+    let { followerID, followingID } = req.body;
+    followerID = Number(followerID);
+    followingID = Number(followingID);
     const subscriber = await userService.findById(followerID);
     const publisher = await userService.findById(followingID);
+    // console.log("subscriber", subscriber);
+    // console.log("publisher", publisher);
     if (!subscriber) {
       res.status(400).send({ message: "follower的id不正确" });
       return;
@@ -153,23 +162,26 @@ class UserController {
     const following = subscriber.following;
     const fans = publisher.fans;
     let index;
-    if ((index = following.indexOf(followingID) === -1)) {
+    if ((index = following.indexOf(followingID)) === -1) {
       subscriber.following.push(followingID);
     } else {
       subscriber.following.splice(index, 1);
     }
 
-    if ((index = fans.indexOf(followerID) === -1)) {
-      publisher.fans.push(index);
+    if ((index = fans.indexOf(followerID)) === -1) {
+      publisher.fans.push(followerID);
     } else {
       publisher.fans.splice(index, 1);
     }
 
-    await userService.update(followerID, subscriber);
-    await userService.update(followingID, publisher);
+    try {
+      await userService.update(followerID, subscriber);
+      await userService.update(followingID, publisher);
+      res.send({ message: "操作成功" });
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
   }
-
-  async unfollow(req, res) {}
 }
 
 // 导出 Controller 的实例

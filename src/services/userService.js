@@ -46,6 +46,7 @@ class UserService {
    */
   async update(coderID, updater) {
     const user = await userTable.where({ coderID }).findOne();
+    console.log(user);
     if (!user) {
       const error = new Error(`user:${coderID} not found`);
       error.status = 404;
