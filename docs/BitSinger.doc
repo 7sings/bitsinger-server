@@ -1,0 +1,1812 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:w="urn:schemas-microsoft-com:office:word"
+    xmlns="http://www.w3.org/TR/REC-html40">
+    <head><meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style type="text/css">
+        table  
+        {  
+            border-collapse: collapse;
+            border: none;  
+            width: 100%;  
+        }  
+        td,tr  
+        {  
+            border: solid #CCC 1px;
+            padding:3px;
+            font-size:9pt;
+        } 
+        .codestyle{
+            word-break: break-all;
+            mso-highlight:rgb(252, 252, 252);
+            padding-left: 5px; background-color: rgb(252, 252, 252); border: 1px solid rgb(225, 225, 232);
+        }
+        img {
+            width:100;
+        }
+    </style>
+    <meta name=ProgId content=Word.Document>
+    <meta name=Generator content="Microsoft Word 11">
+    <meta name=Originator content="Microsoft Word 11">
+    <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+    <body><h1>1、接口规范示例</h1><div style="margin-left:20px;"><h5>简要描述</h5>
+<ul>
+<li>用户注册接口（示例）</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/user/register</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>昵称</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "请求成功",
+    "data": {
+      "uid": "1",
+      "username": "12154545",
+      "name": "吴系挂",
+      "groupid": 2 ,
+      "reg_time": "1436864169",
+      "last_login_time": "0",
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+<tr>
+<td style="text-align: left;">retCode</td>
+<td style="text-align: left;">int</td>
+<td>0 代表成功，其他错误，信息放在retMsg中</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>2、登录接口</h1><div style="margin-left:20px;"><h5>简要描述</h5>
+<ul>
+<li>用户注册接口（示例）</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/user/login</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "请求成功",
+    "data": {
+      "token": "1zsfaweofagvadv...",
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">retCode</td>
+<td style="text-align: left;">int</td>
+<td>0 代表成功，其他错误，信息放在retMsg中</td>
+</tr>
+<tr>
+<td style="text-align: left;">retMsg</td>
+<td style="text-align: left;">string</td>
+<td>请求结果信息</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>3、用户信息接口</h1><div style="margin-left:20px;"><h5>用户信息接口</h5>
+<ul>
+<li>用户信息接口（示例）</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/user/get</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">userId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Long</td>
+<td>用户id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "请求成功",
+    "data": {
+      "username": "12154545",
+      "avatar": "头像地址",
+      "fanCount": 2 ,
+      "followCount": 123,
+      "dynamicCount": 0,
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">retCode</td>
+<td style="text-align: left;">int</td>
+<td>0 代表成功，其他错误，信息放在retMsg中</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">avatar</td>
+<td style="text-align: left;">String</td>
+<td>头像地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">fanCount</td>
+<td style="text-align: left;">long</td>
+<td>粉丝数量</td>
+</tr>
+<tr>
+<td style="text-align: left;">followCount</td>
+<td style="text-align: left;">long</td>
+<td>关注数量</td>
+</tr>
+<tr>
+<td style="text-align: left;">dynamicCount</td>
+<td style="text-align: left;">long</td>
+<td>动态数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>4、获取关注/粉丝接口</h1><div style="margin-left:20px;"><h5>获取关注/粉丝接口</h5>
+<ul>
+<li>获取关注/粉丝接口（示例）</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/fans/get</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">userId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Long</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>获取类型：1：粉丝，2：关注</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "请求成功",
+    "data": [{
+      "userId": 12154545,
+      "username": "12154545",
+      "avatar": "头像地址",
+      "fanCount": 2 ,
+      "followCount": 123,
+      "dynamicCount": 0,
+    },{
+      "userId": 12154545,
+      "username": "12154545",
+      "avatar": "头像地址",
+      "fanCount": 2 ,
+      "followCount": 123,
+      "dynamicCount": 0,
+    }
+    .
+    .
+    .
+
+    ]
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">retCode</td>
+<td style="text-align: left;">int</td>
+<td>0 代表成功，其他错误，信息放在retMsg中</td>
+</tr>
+<tr>
+<td style="text-align: left;">userId</td>
+<td style="text-align: left;">long</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">avatar</td>
+<td style="text-align: left;">String</td>
+<td>头像地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">fanCount</td>
+<td style="text-align: left;">long</td>
+<td>粉丝数量</td>
+</tr>
+<tr>
+<td style="text-align: left;">followCount</td>
+<td style="text-align: left;">long</td>
+<td>关注数量</td>
+</tr>
+<tr>
+<td style="text-align: left;">dynamicCount</td>
+<td style="text-align: left;">long</td>
+<td>动态数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>5、评论接口(开发中)</h1><div style="margin-left:0px;"><h2>5.1、01-新增评论</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>comment数据表中添加一行;</li>
+<li>根据postID在Post数据表中的comments字段中添加该commentID
+<h5>简要描述</h5></li>
+</ol>
+<ul>
+<li>新增评论接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论来源用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论目标用户id, 一级评论 to为'', 二级评论 to为目标用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Date</td>
+<td>评论日期</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "新增评论成功",
+    "data": {
+        from:'12345678',
+        to: '12345679',
+        postID: '12345676',
+        content: '',
+        date: '2021/9/25 下午7:36:54',
+        like: ['12345678', '12345679']
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">string</td>
+<td>评论来源用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">string</td>
+<td>评论目标用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">string</td>
+<td>评论内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>评论日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户id数组</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.2、02-删除评论</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>根据commentID在Comment Table中删除一行; </li>
+<li>根据postID在Post数据表中的comments字段中删除该commentID
+<h5>简要描述</h5></li>
+</ol>
+<ul>
+<li>删除评论接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment/id</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>DELETE</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论id, 写在path中</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态id, query</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "删除评论成功",
+    "data": {
+        from:'12345678',
+        to: '12345679',
+        postID: '12345676',
+        content: '',
+        date: '2021/9/25 下午7:36:54',
+        like: ['12345678', '12345679']
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">string</td>
+<td>评论来源用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">string</td>
+<td>评论目标用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">string</td>
+<td>评论内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>评论日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户id数组</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.3、03-获取评论列表</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>根据postID在Comment Table查询对应的comment;</li>
+<li>根据comment中from和to字段, 查询对应用户信息;</li>
+<li>返回评论数据
+<h5>简要描述</h5></li>
+</ol>
+<ul>
+<li>获取评论列表接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment/list</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "获取所有评论成功",
+    "data": [{
+        fromInfo: {
+            _id: '',
+            coderID: '',
+            username: '',
+            avatar: '',
+            githubURL: '',
+            fans: [],
+            following: []
+        },
+        toInfo: {
+            _id: '',
+            coderID: '',
+            username: '',
+            avatar: '',
+            githubURL: '',
+            fans: [],
+            following: []
+        },
+        postID: '12345676',
+        content: '',
+        date: '2021/9/25 下午7:36:54',
+        like: ['12345678', '12345679']
+    }]
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">fromInfo</td>
+<td style="text-align: left;">Object</td>
+<td>评论来源用户的数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">toInfo</td>
+<td style="text-align: left;">Object</td>
+<td>评论目标用户的数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">string</td>
+<td>评论内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>评论日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户id数组</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.4、04-获取单条评论</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>根据commentID在Comment Table查询对应的comment;</li>
+<li>根据from和to查询对应用户信息;</li>
+<li>返回数据
+<h5>简要描述</h5></li>
+</ol>
+<ul>
+<li>根据commentID获取单条评论接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment/id</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论id, 写在path中</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "获取单条评论成功",
+    "data": {
+        fromInfo: {
+            _id: '',
+            coderID: '',
+            username: '',
+            avatar: '',
+            githubURL: '',
+            fans: [],
+            following: []
+        },
+        toInfo: {
+            _id: '',
+            coderID: '',
+            username: '',
+            avatar: '',
+            githubURL: '',
+            fans: [],
+            following: []
+        },
+        postID: '12345676',
+        content: '',
+        date: '2021/9/25 下午7:36:54',
+        like: ['12345678', '12345679']
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">fromInfo</td>
+<td style="text-align: left;">Object</td>
+<td>评论来源用户的数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">toInfo</td>
+<td style="text-align: left;">Object</td>
+<td>评论目标用户的数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">string</td>
+<td>动态id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">string</td>
+<td>评论内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>评论日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户id数组</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.5、11-新增点赞</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>根据commentID在Comment Table查询对应的comment;</li>
+<li>在comment的like字段中添加userID;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>新增评论点赞接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment/like</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">commentID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论id</td>
+</tr>
+<tr>
+<td style="text-align: left;">userID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>点赞用户id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "点赞成功",
+    "data": {}
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.6、12-取消点赞</h2><div style="margin-left:0px;"><p>责任人: 舒腾飞
+行为描述:</p>
+<ol>
+<li>根据commentID在Comment Table查询对应的comment;</li>
+<li>在comment的like字段中删除userID;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>取消评论点赞接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/comment/like</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>DELETE</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">commentID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>评论id</td>
+</tr>
+<tr>
+<td style="text-align: left;">userID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>点赞用户id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "点赞成功",
+    "data": {}
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>6、动态接口(开发中)</h1><div style="margin-left:0px;"><h2>6.1、01-新增post</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>post数据表中添加一行;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>用户点击发布动态</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">author</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>user的id</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态的文字部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态的代码部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">img</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>图片URL</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Date</td>
+<td>发布动态日期</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "新增评论成功",
+    "data": {
+        _id:'',
+        author:'12345678',
+        like: [],
+        content: '',
+        code: '',
+        img: '',
+        date: '2021/9/25 7:36:54',
+        comments: []
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">_id</td>
+<td style="text-align: left;">string</td>
+<td>MongoDB自动生成的主键</td>
+</tr>
+<tr>
+<td style="text-align: left;">author</td>
+<td style="text-align: left;">String</td>
+<td>User的_id</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户的id列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">String</td>
+<td>动态的文字部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">String</td>
+<td>动态的代码部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">img</td>
+<td style="text-align: left;">StringString</td>
+<td>图片URL</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>发布动态日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Array</td>
+<td>评论_id列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.2、02-删除post</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>post数据表中删除一行;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>用户点击删除动态</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post/id</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>DELETE</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>动态的id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "删除动态成功",
+    "data": {
+        _id:'',
+        author:'12345678',
+        like: [],
+        content: '',
+        code: '',
+        img: '',
+        date: '2021/9/25 7:36:54',
+        comments: []
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">_id</td>
+<td style="text-align: left;">string</td>
+<td>MongoDB自动生成的主键</td>
+</tr>
+<tr>
+<td style="text-align: left;">author</td>
+<td style="text-align: left;">String</td>
+<td>User的_id</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户的id列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">String</td>
+<td>动态的文字部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">String</td>
+<td>动态的代码部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">img</td>
+<td style="text-align: left;">StringString</td>
+<td>图片URL</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>发布动态日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Array</td>
+<td>评论_id列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.3、03-修改post(未完成)</h2><div style="margin-left:0px;"></div><h2>6.4、04-查询post列表</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>获取post数据表中的所有数据;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>用户浏览网站主页, 获取post列表</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "获取动态列表成功",
+    "data": [{
+        _id:'',
+        author:'12345678',
+        like: [],
+        content: '',
+        code: '',
+        img: '',
+        date: '2021/9/25 7:36:54',
+        comments: []
+    }]
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">_id</td>
+<td style="text-align: left;">string</td>
+<td>MongoDB自动生成的主键</td>
+</tr>
+<tr>
+<td style="text-align: left;">author</td>
+<td style="text-align: left;">String</td>
+<td>User的_id</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户的id列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">String</td>
+<td>动态的文字部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">String</td>
+<td>动态的代码部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">img</td>
+<td style="text-align: left;">StringString</td>
+<td>图片URL</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>发布动态日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Array</td>
+<td>评论_id列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.5、05-查询单个post(未完成)</h2><div style="margin-left:0px;"></div><h2>6.6、11-点赞post</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>根据postID, 往like数组中添加userID</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>用户给动态点赞</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post/like</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>动态的id</td>
+</tr>
+<tr>
+<td style="text-align: left;">userID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>user的id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "点赞成功",
+    "data": {}
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.7、12-取消点赞post</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>根据postID, 往like数组中删除userID</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>用户给动态取消点赞;</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post/like</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>DELETE</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">postID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>动态的id</td>
+</tr>
+<tr>
+<td style="text-align: left;">userID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>user的id</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "取消点赞成功",
+    "data": {}
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.8、06-根据userID获取post列表</h2><div style="margin-left:0px;"><p>责任人: 颜欣菲, 舒腾飞</p>
+<p><strong>行为描述:</strong></p>
+<ol>
+<li>根据userID获取post列表;</li>
+</ol>
+<h5>简要描述</h5>
+<ul>
+<li>根据userID获取post列表</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>http://xx.com/api/post/list/id</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>userID</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "retCode": 0,
+    "retMsg": "获取动态列表成功",
+    "data": [{
+        _id:'',
+        author:'12345678',
+        like: [],
+        content: '',
+        code: '',
+        img: '',
+        date: '2021/9/25 7:36:54',
+        comments: []
+    }]
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">_id</td>
+<td style="text-align: left;">string</td>
+<td>MongoDB自动生成的主键</td>
+</tr>
+<tr>
+<td style="text-align: left;">author</td>
+<td style="text-align: left;">String</td>
+<td>User的_id</td>
+</tr>
+<tr>
+<td style="text-align: left;">like</td>
+<td style="text-align: left;">Array</td>
+<td>点赞用户的id列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">String</td>
+<td>动态的文字部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">String</td>
+<td>动态的代码部分</td>
+</tr>
+<tr>
+<td style="text-align: left;">img</td>
+<td style="text-align: left;">StringString</td>
+<td>图片URL</td>
+</tr>
+<tr>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date</td>
+<td>发布动态日期</td>
+</tr>
+<tr>
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Array</td>
+<td>评论_id列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>7、用户接口</h1><div style="margin-left:0px;"><h2>7.1、用户登录</h2><div style="margin-left:0px;"><h5>简要描述</h5>
+<ul>
+<li>用户登录接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>https://qcm5fb.app.cloudendpoint.cn/api/user/login</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code class="language-json"> {
+    "message": "登录成功",
+    "tokenObj": {
+        "_id": "614fec22fb96575bb4260da9",
+        "token": "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",
+        "userID": 38814939,
+        "inBlacklist": false,
+        "expires": "2021-09-27T03:46:09.610Z",
+        "createdAt": "2021-09-26T03:42:26.488Z",
+        "updatedAt": "2021-09-26T03:46:09.611Z"
+    },
+    "user": {
+        "_id": "614fea612945a844af341f8f",
+        "coderID": 38814939,
+        "username": "7sings",
+        "avatar": "https://avatars.githubusercontent.com/u/38814939?v=4",
+        "githubURL": "https://github.com/7sings",
+        "fans": [],
+        "following": [],
+        "createdAt": "2021-09-26T03:34:57.540Z",
+        "updatedAt": "2021-09-26T03:34:57.540Z"
+    }
+}</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>提示信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenObj</td>
+<td style="text-align: left;">Object</td>
+<td>token对象，其属性参照数据库文档</td>
+</tr>
+<tr>
+<td style="text-align: left;">user</td>
+<td style="text-align: left;">Object</td>
+<td>user对象，其属性参照数据库文档</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>根据返回的状态码确定是否正常，200为正常，400位请求数据有问题，401是未登录，403是权限不够，500是服务出了bug</li>
+</ul></div><h2>7.2、查找用户</h2><div style="margin-left:0px;"><h5>简要描述</h5>
+<ul>
+<li>根据coderID查找用户接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>https://qcm5fb.app.cloudendpoint.cn/api/user/find/:coderID</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">coderID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Number</td>
+<td>用户的coderID</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code class="language-json">{
+    "message": "查找成功",
+    "data": {
+        "_id": "614fea612945a844af341f8f",
+        "coderID": 38814939,
+        "username": "7sings",
+        "avatar": "https://avatars.githubusercontent.com/u/38814939?v=4",
+        "githubURL": "https://github.com/7sings",
+        "fans": [],
+        "following": [
+            64592293,
+            60663472
+        ],
+        "createdAt": "2021-09-26T03:34:57.540Z",
+        "updatedAt": "2021-09-26T05:22:46.232Z"
+    }
+}</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>提示信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">user对象</td>
+<td>具体属性参考数据库文档</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看login接口的错误代码描述</li>
+</ul></div><h2>7.3、查找所有用户</h2><div style="margin-left:0px;"><h5>简要描述</h5>
+<ul>
+<li>查找系统所有用户</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>https://qcm5fb.app.cloudendpoint.cn/api/user/all</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code class="language-json">{
+    "users": [
+        {
+            "_id": "614fea612945a844af341f8f",
+            "coderID": 38814939,
+            "username": "7sings",
+            "avatar": "https://avatars.githubusercontent.com/u/38814939?v=4",
+            "githubURL": "https://github.com/7sings",
+            "fans": [],
+            "following": [
+                64592293,
+                60663472
+            ],
+            "createdAt": "2021-09-26T03:34:57.540Z",
+            "updatedAt": "2021-09-26T05:22:46.232Z"
+        },
+        {
+            "_id": "614ffff19edebcb6695e73ca",
+            "coderID": 64592293,
+            "username": "sugar-at-night",
+            "avatar": "https://avatars.githubusercontent.com/u/64592293?v=4",
+            "githubURL": "https://github.com/sugar-at-night",
+            "fans": [
+                38814939
+            ],
+            "following": [],
+            "createdAt": "2021-09-26T05:06:57.575Z",
+            "updatedAt": "2021-09-26T05:06:57.575Z"
+        },
+        {
+            "_id": "61500449cea455177e23eb56",
+            "coderID": 60663472,
+            "username": "18816936357",
+            "avatar": "https://avatars.githubusercontent.com/u/60663472?v=4",
+            "githubURL": "https://github.com/18816936357",
+            "fans": [
+                38814939
+            ],
+            "following": [],
+            "createdAt": "2021-09-26T05:25:29.535Z",
+            "updatedAt": "2021-09-26T05:25:29.535Z"
+        }
+    ]
+}</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">users</td>
+<td style="text-align: left;">Array</td>
+<td>所有用户对象user的集合，每个user属性参考数据库文档</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看login接口的错误代码描述</li>
+</ul></div><h2>7.4、注销用户 </h2><div style="margin-left:0px;"><h5>简要描述</h5>
+<ul>
+<li>根据coderID注销用户</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>https://qcm5fb.app.cloudendpoint.cn/api/user/remove/:coderID</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>DELETE</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">coderID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Number</td>
+<td>用户的coderID</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code class="language-json">{
+    "ok":true
+}</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ok</td>
+<td style="text-align: left;">Boolean</td>
+<td>true代表删除成功，否则404提示要删除的用户不存在</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看login接口的错误代码描述</li>
+</ul></div><h2>7.5、关注/取关</h2><div style="margin-left:0px;"><h5>简要描述</h5>
+<ul>
+<li>关注/取关接口，若未关注，则行为是关注；若已经关注，则行为是取关</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>https://qcm5fb.app.cloudendpoint.cn/api/user/follow</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST</li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">followerID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Number</td>
+<td>订阅者的coderID</td>
+</tr>
+<tr>
+<td style="text-align: left;">followingID</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Number</td>
+<td>发布者的coderID</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code class="language-json">{"message":"操作成功"}</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>提示信息</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>更多返回错误代码请看login接口的错误代码描述</li>
+</ul></div></div></body></html>
