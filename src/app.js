@@ -4,6 +4,7 @@ const todoRouter = require("./routers/todo");
 const userRouter = require("./routers/user");
 const commentRouter = require("./routers/comment");
 const postRouter = require("./routers/post");
+const cors = require("cors");
 
 const express = require("express");
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 // 请求体 parse 中间件，用于 parse json 格式请求体
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // 为应用使用路由定义
 // 待办事项业务路由
