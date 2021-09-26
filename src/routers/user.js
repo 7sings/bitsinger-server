@@ -19,8 +19,9 @@ function wrap(handler) {
 
 router.get("/all", wrap(userController.getAllUsers));
 router.get("/find/:id", wrap(userController.getUserById));
-router.delete("/:id", wrap(userController.delete));
+router.delete("/remove/:id", wrap(userController.delete));
 router.get("/login", wrap(userController.login));
 router.get("/login/callback", wrap(userController.loginCallback));
+router.post("/follow", wrap(userController.follow));
 
 module.exports = router;
