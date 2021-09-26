@@ -11,9 +11,17 @@ const ObjectId = inspirecloud.db.ObjectId;
  */
 class PostService {
   /**
+   * 查询所有动态信息
+   */
+  async listAll() {
+    const all = await postTable.where().find();
+    return all;
+  }
+
+  /**
    * 在个人主页页面查看已发布的动态信息
    */
-  async listAll(author) {
+  async listAllByAuthor(author) {
     const all = await postTable.where({ author }).find();
     return all;
   }
@@ -38,45 +46,47 @@ class PostService {
   }
 
   /**
-   * 创建一条评论后
-   * 根据comment.postID, 在post的comment中添加评论id (postService)
+   * 点赞post
+   * 往like数组中添加userID
    */
-  async aftercomment(postID, userID) {
-    const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
-    result.comments.push(userID)
-    await postTable.save(result)
-  }
-
-  /**
-   * 创建一个点赞后
-   * 给id为commentID的评论点赞, 往like数组中添加userID
-   */
-   async afterlike(postID, userID) {
+  async like(postID, userID) {
     const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
     result.like.push(userID)
     await commentTable.save(result)
-  }
-
-
-  /**
-   * 删除一条评论
-   * todo: 根据postID, 在post的comment中删除评论id (postService)
-   */
-  async afteruncomment(postID, userID) {
-    const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
-    result.comments.splice(result.like.indexOf(userID), 1)
-    await postTable.save(result)
   }
 
   /**
    * 删除点赞
    * 给id为commentID的评论取消点赞, 在like数组中删除userID
    */
-  async afterunlike(postID, userID) {
+  async unlike(postID, userID) {
     const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
     result.like.splice(result.like.indexOf(userID), 1)
     await postTable.save(result)
   }
+
+  /**
+   * 创建一条评论后
+   * 根据comment.postID, 在post的comment中添加评论id (postService)
+   */
+  // async aftercomment(postID, userID) {
+  //   const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
+  //   result.comments.push(userID)
+  //   await postTable.save(result)
+  // }
+
+
+
+  /**
+   * 删除一条评论
+   * todo: 根据postID, 在post的comment中删除评论id (postService)
+   */
+  // async afteruncomment(postID, userID) {
+  //   const result = await postTable.where({ _id: ObjectId(postID) }).findOne();
+  //   result.comments.splice(result.like.indexOf(userID), 1)
+  //   await postTable.save(result)
+  // }
+
 }
 
 // 导出 Service 的实例
