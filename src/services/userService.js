@@ -1,25 +1,23 @@
 const userTable = require("../models/userTable");
-const inspirecloud = require("@byteinspire/api");
-const ObjectId = inspirecloud.db.ObjectId;
 
 /**
  * UserService
  * Service 是业务具体实现，由 Controller 或其它 Service 调用
- * 包含待办事项的增删改查功能
+ * 包含用户的增删改查功能
  */
 class UserService {
   /**
-   * 列出所有待办事项
-   * @return {Promise<Array<any>>} 返回待办事项数组
+   * 查找所有用户
+   * @return {Promise<Array<any>>} 返回用户数组
    */
-  async listAll() {
-    const all = await userTable.where().find();
-    return all;
+  async getAllUsers() {
+    const users = await userTable.where().find();
+    return users;
   }
 
   /**
-   * 创建一条待办事项
-   * @param user 用于创建待办事项的数据，原样存进数据库
+   * 创建一个新用户
+   * @param user 用于创建用户的数据，原样存进数据库
    * @return {Promise<any>} 返回实际插入数据库的数据，会增加_id，createdAt和updatedAt字段
    */
   async create(user) {
@@ -27,41 +25,45 @@ class UserService {
   }
 
   /**
-   * 删除一条待办事项
-   * @param id 待办事项的 _id
+   * 删除一名用户
+   * @param coderID 用户 coderID
    * 若不存在，则抛出 404 错误
    */
-  async delete(id) {
-    const result = await userTable.where({ _id: ObjectId(id) }).delete();
+  async delete(coderID) {
+    const result = await userTable.where({ coderID }).delete();
     if (result.deletedCount === 0) {
-      const error = new Error(`user:${id} not found`);
+      const error = new Error(`user:${coderID} not found`);
       error.status = 404;
       throw error;
     }
   }
 
   /**
-   * 删除所有待办事项
-   */
-  async deleteAll() {
-    await userTable.where().delete();
-  }
-
-  /**
-   * 更新一条待办事项
-   * @param id 待办事项的 _id
+   * 更新一名用户
+   * @param coderID 用户的 coderID
    * @param updater 将会用原对象 merge 此对象进行更新
    * 若不存在，则抛出 404 错误
    */
-  async update(id, updater) {
-    const user = await userTable.where({ _id: ObjectId(id) }).findOne();
+  async update(coderID, updater) {
+    const user = await userTable.where({ coderID }).findOne();
     if (!user) {
-      const error = new Error(`user:${id} not found`);
+      const error = new Error(`user:${coderID} not found`);
       error.status = 404;
       throw error;
     }
     Object.assign(user, updater);
     await userTable.save(user);
+  }
+
+  /**
+   * @description 根据codeID查找用户
+   * @param {number} coderID 用户的github接口返回的id
+   * @returns {object} 返回user
+   */
+  async findById(coderID) {
+    const user = await userTable.where({ coderID }).findOne();
+
+    return user;
   }
 }
 

@@ -1,9 +1,11 @@
 const path = require("path");
+const env = require("dotenv");
 const todoRouter = require("./routers/todo");
 const userRouter = require("./routers/user");
-const loginRouter = require("./routers/login");
 
 const express = require("express");
+
+env.config();
 
 const app = express();
 
@@ -17,7 +19,6 @@ app.use(express.json());
 // 待办事项业务路由
 app.use("/api/todo", todoRouter);
 app.use("/api/user", userRouter);
-app.use("/api/login", loginRouter);
 
 // 若无匹配业务路由，则匹配 404 路由，代表访问路径不存在
 app.use(notFound);

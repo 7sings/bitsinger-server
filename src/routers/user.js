@@ -16,11 +16,11 @@ function wrap(handler) {
 }
 
 // 组装路由
-router.put("/:id/done", wrap(userController.done));
-router.put("/:id/undone", wrap(userController.undone));
+
 router.get("/", wrap(userController.listAll));
-router.post("/", wrap(userController.create));
+router.get("/:id", wrap(userController.getUserById));
 router.delete("/:id", wrap(userController.delete));
-router.delete("/", wrap(userController.deleteAll));
+router.get("/login", wrap(userController.login));
+router.get("/login/callback", wrap(userController.loginCallback));
 
 module.exports = router;
